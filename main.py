@@ -9,19 +9,26 @@ import time
 # Create instance of Chrome Webdriver
 driver = webdriver.Chrome()
 # Webdriver will automatically wait until the page has fully loaded
-driver.get("http://www.python.org")
+res = driver.get("http://www.python.org")
 
-# Python test
-assert "Python" in driver.title
-# Find singular HTML elements by attribute
-elem = driver.find_element(By.NAME, "q")
-# Send keys. Be safe and clear the input field
-elem.clear()
-elem.send_keys("pycon")
-elem.send_keys(Keys.RETURN)
+def simpleAsserts(d):
+    # Python test
+    assert "Python" in d.title
+    # Find singular HTML elements by attribute
+    elem = driver.find_element(By.NAME, "q")
+    # Send keys. Be safe and clear the input field
+    elem.clear()
+    elem.send_keys("pycon")
+    elem.send_keys(Keys.RETURN)
 
-# Python test
-assert "No results found." not in driver.page_source
-# Sleepy time to see what the heck happened
-time.sleep(5)
-driver.close()
+    # Python test
+    assert "No results found." not in driver.page_source
+    # Sleepy time to see what the heck happened
+    time.sleep(5)
+    driver.close()
+
+def main():
+    simpleAsserts(res)
+
+if __name__ == "__main__":
+    main()
