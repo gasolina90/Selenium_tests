@@ -2,7 +2,7 @@ import unittest
 from selenium import webdriver 
 from selenium.webdriver.common.keys import Keys   
 from selenium.webdriver.common.by import By 
-from time import sleep
+import time
 
 class PythonOrgSearch(unittest.TestCase):
 
@@ -12,10 +12,15 @@ class PythonOrgSearch(unittest.TestCase):
     def test_search_in_python_org(self):
         driver = self.driver
         driver.get("http://www.python.org")
+        time.sleep(1)
         self.assertIn("Python", driver.title)
+        time.sleep(1)
         elem = driver.find_element(By.NAME, "q")
+        time.sleep(1)
         elem.send_keys("pycon")
+        time.sleep(1)
         elem.send_keys(Keys.RETURN)
+        time.sleep(1)
         self.assertNotIn("No results found", driver.page_source)
 
     def tearDown(self):
