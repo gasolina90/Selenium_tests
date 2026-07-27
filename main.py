@@ -4,6 +4,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By 
 import time
 
+elem_found = []
+
 class PythonOrgSearch(unittest.TestCase):
 
     def setUp(self):
@@ -33,4 +35,4 @@ prs.test_search_in_python_org()
 prs.tearDown
 
 if __name__ -- "__main__":
-    unittest.main(argv=["first-arg-is-ignored"], exit=False)
+    unittest.main()
